@@ -1,10 +1,10 @@
-﻿Id: SunshineAppExport
-Name: Sunshine App Export
-Author: MichaelMKenny
-Version: 1.1.2
-Module: SunshineAppExport.psm1
+﻿Id: ApolloAppExport
+Name: Apollo App Export
+Author: Linx-ESP
+Version: 1.1.2-Apollo
+Module: ApolloAppExport.psm1
 Type: Script
 Icon: icon.png
 Links:
     - Name: GitHub
-      Url: https://github.com/MichaelMKenny/SunshineAppExport
+      Url: https://github.com/Linx-ESP/ApolloAppExport
