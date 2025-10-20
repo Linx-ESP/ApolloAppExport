@@ -39,7 +39,7 @@ function SunshineExport {
     </UserControl.Resources>
 
     <StackPanel Margin="16,16,16,16">
-        <TextBlock Text="Enter your Sunshine apps.json path" 
+        <TextBlock Text="Enter your Apollo apps.json path" 
         Margin="0,0,0,8" 
         VerticalAlignment="Center"/>
 
@@ -83,7 +83,7 @@ function SunshineExport {
     $reader = [System.Xml.XmlNodeReader]::new($xaml)
     $window.Content = [Windows.Markup.XamlReader]::Load($reader)
 
-    $appsPath = "$Env:ProgramW6432\Sunshine\config\apps.json"
+    $appsPath = "$Env:ProgramW6432\Apollo\config\apps.json"
 
     $inputField = $window.Content.FindName("SunshinePath")
     $inputField.Text = $appsPath   
@@ -115,7 +115,7 @@ function SunshineExport {
                 $button.Content = "Dismiss"
 
                 $finishedMessage = $window.Content.FindName("FinishedMessage")
-                $finishedMessage.Text = ("Created {0} Sunshine app shortcuts" -f $shortcutsCreatedCount)
+                $finishedMessage.Text = ("Created {0} Apollo app shortcuts" -f $shortcutsCreatedCount)
                 $finishedMessage.Visibility = "Visible"
             }
         })
@@ -145,7 +145,7 @@ function DoWork([string]$appsPath) {
     
     # Set paths
     $playniteExecutablePath = Join-Path -Path $PlayniteApi.Paths.ApplicationPath -ChildPath "Playnite.DesktopApp.exe"
-    $appAssetsPath = Join-Path -Path $env:LocalAppData -ChildPath "Sunshine Playnite App Export\Apps"
+    $appAssetsPath = Join-Path -Path $env:LocalAppData -ChildPath "Apollo Playnite App Export\Apps"
     if (!(Test-Path $appAssetsPath -PathType Container)) {
         New-Item -ItemType Container -Path $appAssetsPath -Force
     }
@@ -256,7 +256,7 @@ function DoWork([string]$appsPath) {
     [System.IO.File]::WriteAllLines("$env:TEMP\apps.json", $jsonObj)
 
 
-    $result = [System.Windows.Forms.MessageBox]::Show("You will be prompted for administrator rights, as Sunshine now requires administrator rights in order to modify the apps.json file.", "Administrator Required", [System.Windows.Forms.MessageBoxButtons]::OKCancel, [System.Windows.Forms.MessageBoxIcon]::Information)
+    $result = [System.Windows.Forms.MessageBox]::Show("You will be prompted for administrator rights, as Apollo now requires administrator rights in order to modify the apps.json file.", "Administrator Required", [System.Windows.Forms.MessageBoxButtons]::OKCancel, [System.Windows.Forms.MessageBoxIcon]::Information)
     if ($result -eq [System.Windows.Forms.DialogResult]::Cancel) {
         return 0
     }
